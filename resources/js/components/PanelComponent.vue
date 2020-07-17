@@ -1,6 +1,9 @@
 <template>
 	<v-app id="inspire">
+
+
 		<v-app-bar app color="primary" dark>
+			<v-app-bar-nav-icon ></v-app-bar-nav-icon>
 			<v-icon class="mx-4" large>mdi-monitor-eye</v-icon>
 			<v-toolbar-title>Zentinel</v-toolbar-title>
 			<v-spacer></v-spacer>
@@ -38,6 +41,7 @@
                                     {{item.description}}
                                     <v-btn class="float-right" large fab :to="item.url" v-bind="attrs" v-on="on"  :color="item.color" >
                                         <v-icon>{{item.icon}}</v-icon>
+
                                     </v-btn>
                                 </v-card-text>
                             </v-card>
@@ -72,7 +76,7 @@ export default {
 					title: "DOFORMS",
 					description: "app 1 description",
 					icon: "mdi-toy-brick",
-                    color: "#0a8ea0",
+                    color: "#c13832",
                     url:"doforms"
 				},
 				{
@@ -101,7 +105,7 @@ export default {
 					description: "app 1 description",
 					icon: "mdi-table-chair",
                     color: "#0a8ea0",
-                    url:"gesdoc"
+                    url:"actif"
                 },
                 {
 					title: "VENTAS",

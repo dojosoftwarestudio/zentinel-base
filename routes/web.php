@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return view('zentinel');
 });
+Route::get('/{any}', 'ZentinelController@index')->where('any', '.*');
