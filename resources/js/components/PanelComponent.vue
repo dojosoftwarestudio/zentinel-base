@@ -14,7 +14,7 @@
 				<v-icon>mdi-bell</v-icon>
 			</v-btn>
             <v-btn icon>
-				<v-icon>mdi-logout</v-icon>
+				<v-icon @click="logout">mdi-logout</v-icon>
 			</v-btn>
 			<v-btn icon large>
 				<v-avatar size="32px" item>
@@ -124,6 +124,12 @@ export default {
 
 			]
 		};
-	}
+	},
+	methods:{
+		logout: function(){
+			this.$store.commit('logout')
+			this.$router.push('/')
+		}
+	},
 };
 </script>

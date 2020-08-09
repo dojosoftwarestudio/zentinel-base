@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-toolbar >
-            <v-toolbar-title>Available Solici</v-toolbar-title>
+            <v-toolbar-title>Available Solicitudes</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn fab dark color="teal" small>
                 <v-icon>mdi-plus</v-icon>

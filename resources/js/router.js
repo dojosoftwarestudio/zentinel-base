@@ -22,7 +22,10 @@ const routes = [
     },
     {
         path: '/panel',
-        component: panel
+        component: panel,
+        meta:{
+            requiresAuth: true
+        }
     },
     {
         path: '/sast',

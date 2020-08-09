@@ -7,9 +7,19 @@ Vue.use(Vuetify)
 
 import themeDojo from './themeDojo'
 import router from './router'
+import store from './store'
 
-Vue.component('login-component', require('./components/LoginComponent.vue').default)
-Vue.component('PanelComponent', require('./components/PanelComponent.vue').default)
+router.beforeEach((to, from, next) =>{
+    const requiresAuth = to.matched.some( record => record.meta.requiresAuth)
+    const currentUser = store.state.currentUser
+    if(requiresAuth && !currentUser){
+        next('/')
+    }else if(to.path == '/' && currentUser){
+        next('/')
+    }else{
+        next()
+    }
+})
 
 const app = new Vue({
     el: '#app',
@@ -17,7 +27,8 @@ const app = new Vue({
         theme: {
             themes: {
                 light: {
-                    primary: '#30c39e',
+                    // primary: '#00334e',
+                    primary: '#123962',
                     secondary: '#28353d',
                     accent: '#222b30',
                     error: '#e55e5e',
@@ -31,9 +42,10 @@ const app = new Vue({
             }
         }
     }),
+    store,
     router,
     icons: {
-        iconfont: 'mdi', // default - only for display purposes
+        iconfont: 'mdi',
     },
 
 });
