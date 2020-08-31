@@ -1,71 +1,81 @@
 <template>
     <v-card>
         <v-toolbar >
-            <v-toolbar-title>Available Users</v-toolbar-title>
+            <v-toolbar-title>Category</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn fab dark color="teal" small>
-                <v-icon>mdi-plus</v-icon>
-            </v-btn>
+            <Form @list="list()"></Form>
+
         </v-toolbar>
-        <v-data-table :headers="headers" :items="elementsTable" :single-expand="singleExpand" :expanded.sync="expanded" show-expand>
-            <template v-slot:expanded-item="{ headers, item }" @click="alert()">
-                <td :colspan="headers.length">
-                    <v-btn-toggle v-model="toggle_exclusive">
-                        <v-btn color="white" @click="alert(item)">
-                            <v-icon>mdi-format-italic</v-icon>
-                        </v-btn>
-
-                        <v-btn color="white">
-                            <v-icon>mdi-format-bold</v-icon>
-                        </v-btn>
-
-                        <v-btn color="white">
-                            <v-icon>mdi-format-underline</v-icon>
-                        </v-btn>
-                    </v-btn-toggle>
-                </td>
-            </template>
-
-            <template v-slot:no-data>
-                <v-btn color="primary" @click="list()">reload</v-btn>
-            </template>
-        </v-data-table>
+        <table-component
+          :table="table"
+          @edit-item="editItem"
+          @delete-item="deleteItem"
+          @detail-item="detailItem"
+        ></table-component>
     </v-card>
 </template>
 <script>
-
+import Form from './Form'
 export default {
-
-    data(){
+  components:{
+    Form
+  },
+data(){
         return{
-            headers:[
-                { text: "Name", align: "start", value: "name"},
-                { text: "Email", value: "email" },
-                { text: "status", value: "status" },
-                { text: "Usuario", value: "user_mod" },
-                { text: '', value: 'data-table-expand' },
-            ],
-            elementsTable:[],
-            expanded: [],
-            singleExpand: false,
+             table:{
+              headers:[
+                { text: 'Acciones', value: 'actions', type: 'actions'},
+                { text: 'Nombre', value: 'nombre'},
+                { text: 'Descripcion', value: 'descripcion' },
+                { text: 'Prioridad', value: 'prioridad', type:'prioridad' },
+                { text: 'Publica', value: 'publica', type:'public' },
+                { text: 'Fecha Creación', value: 'created_at'},
+              ],
+              items: [],
+              sort: 'created_at'
+          },
         }
-    },
-    components:{
-
     },
     porps:{},
     methods:{
-        // list: async function(){
-        //     const rest = await this.callApi('get', '/api/auth/user/list','')
-        //     this.elementsTable = rest.data
-        // },
-        // alert: function(item){
-        //     console.log("desde ", item.id)
-        // },
+        list: async function(){
+            const rest = await this.callApi('get', '/api/category/list','')
+            if(rest.status === 200)
+                this.table.items = rest.data.data
+            else
+                console.log("Error")
+        },
+        addItem: function(item){
+        },
+        editItem: function(item){
+            console.log("desde ", item.id)
+        },
+        deleteItem: async function(item){
+            // const data = {
+            //     id: item.id_categoria
+            // }
+            // const rest = await this.callApi('delete', 'app/forms/delete', data)
+            // if(rest.status === 200){
+            //     this.message = "Eliminado con exito"
+            //     this.configSnack.color="green"
+            //     this.configSnack.message= `Eliminado con exito el registro ${this.form.name}`
+            // }
+            // else{
+            //     this.message = "Error"
+            //     this.configSnack.color="red"
+            //     this.configSnack.message="Error"
+            // }
+            // this.dialog = false
+            // this.$refs.snackbar.open(this.configSnack);
+            // this.$emit('list')
+        },
+        detailItem: function(item){
+            console.log("desde ", item.id)
+        },
     },
     computed:{},
     created(){
-    //    this.list()
+       this.list()
     }
 }
 </script>

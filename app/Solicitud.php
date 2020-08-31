@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitud extends Model
 {
-	protected $table = "solicitudes";
+    protected $table = "solicitudes";
+    protected $guarded = [];
 
-	protected $fillable = ['id','codigo','descripcion', 'id_user', 'id_tecnico','estado', 'id_categoria'];
+
+	public function solicitante()
+    {
+        return $this->belongsTo(User::class, 'id_user','id');
+    }
+    public function tecnico()
+    {
+        return $this->belongsTo(User::class, 'id_tecnico','id');
+    }
 }

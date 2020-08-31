@@ -66,6 +66,13 @@ export default {
 			drawer: null,
 			items: [
 				{
+					title: "SECURITY",
+					description: "app 1 description",
+					icon: "mdi-shield-lock",
+                    color: "#371777",
+                    url:"security"
+				},
+				{
 					title: "SAST",
 					description: "app 1 description",
 					icon: "mdi-comment-question",
@@ -118,7 +125,7 @@ export default {
 					title: "MONITOR",
 					description: "app 1 description",
 					icon: "mdi-contacts",
-                    color: "#037ef3",
+                    color: "#8a7967",
                     url:"gesdoc"
                 },
 

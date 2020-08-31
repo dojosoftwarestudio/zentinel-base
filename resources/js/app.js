@@ -8,6 +8,11 @@ Vue.use(Vuetify)
 import themeDojo from './themeDojo'
 import router from './router'
 import store from './store'
+import common from './commons'
+Vue.mixin(common)
+
+
+import Components from "./list-component/components";
 
 router.beforeEach((to, from, next) =>{
     const requiresAuth = to.matched.some( record => record.meta.requiresAuth)
@@ -37,6 +42,7 @@ const app = new Vue({
                     sast: '#f85a40',
                     actif: '#0a8ea0'  ,
                     doforms: '#4d4e53'
+
 
                 },
             }

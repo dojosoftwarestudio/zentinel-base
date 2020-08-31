@@ -10,6 +10,9 @@ $factory->define(Category::class, function (Faker $faker) {
         'nombre' => $faker->text($maxNbChars = 10),
         'descripcion' => $faker->text($maxNbChars = 100),
         'prioridad' => $faker->numberBetween(1,5),
-        'is_public' => $faker->numberBetween(0,1)
+        'is_public' => $faker->numberBetween(0,1),
+        'status' => 'activo',
+        'reg_del' => '0',
+        'user_mod' => 'seed',
     ];
 });

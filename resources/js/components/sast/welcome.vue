@@ -20,7 +20,7 @@
 		<v-app-bar dark app color="sast" elevate-on-scroll :clipped-left="$vuetify.breakpoint.lgAndUp" >
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-icon class="mx-4" large>mdi-comment-question</v-icon>
-			<v-toolbar-title > ZENTINEL - SAST </v-toolbar-title>
+			<v-toolbar-title > DoIO - ZENTINEL - SAST </v-toolbar-title>
             <v-spacer></v-spacer>
 			<v-btn icon :to="'/panel'">
 				<v-icon>mdi-home</v-icon>
@@ -60,6 +60,7 @@ data: () => ({
 				{ icon: "mdi-home", url:'/panel', text: "Zentinel" },
 				{ icon: "mdi-account-group", url:'/sast/users', text: "Usuarios" },
                 { icon: "mdi-application", url:'/sast/solicitudes', text: "Solicitudes" },
+                { icon: "mdi-briefcase-search", url:'/sast/atender', text: "Atender" },
                 { icon: "mdi-sitemap", url:'/sast/categories', text: "Categorias" },
                 { icon: "mdi-account-hard-hat", url:'/sast/tecnicos', text: "Tecnicos" },
                 { icon: "mdi-help-circle", url:'/help', text: "Help" },

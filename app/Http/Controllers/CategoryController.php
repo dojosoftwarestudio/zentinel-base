@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 
+use App\Http\Resources\CategoriaResource;
+
 class CategoryController extends Controller
 {
     public function list(){
         $list = Category::all();
-        return response()->json(['list' => $list],200);
+        return response()->json(['data' => CategoriaResource::collection($list)],200);
     }
     public function listBy(Request $req){
         $filter = $req->filter;
@@ -21,6 +23,7 @@ class CategoryController extends Controller
         $category = Category::create($req->all());
         return response()->json(['category' => $category],200);
     }
+
     public function show($id)
     {
         //
@@ -35,6 +38,8 @@ class CategoryController extends Controller
     }
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+        return response()->json(['msg' => 'Borrado exitoso'],200);
     }
 }

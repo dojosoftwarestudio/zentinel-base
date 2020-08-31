@@ -9,6 +9,7 @@ import login from './components/LoginComponent'
 import SastPanel  from './components/sast/welcome'
 import SastUsuarios from './components/sast/usuario/List'
 import SastSolicitudes from './components/sast/solicitud/List'
+import SolicitudesTecnico from './components/sast/tecnico/solicitudes/List'
 import SastCategories from './components/sast/categoria/List'
 import SastTecnicos from './components/sast/tecnico/List'
 
@@ -33,6 +34,7 @@ const routes = [
         children: [
             { path: 'users', component: SastUsuarios },
             { path: 'solicitudes', component: SastSolicitudes },
+            { path: 'atender', component: SolicitudesTecnico  },
             { path: 'categories', component: SastCategories },
             { path: 'tecnicos', component: SastTecnicos },
         ]

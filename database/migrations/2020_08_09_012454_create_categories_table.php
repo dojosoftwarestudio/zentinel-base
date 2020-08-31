@@ -1,5 +1,6 @@
 <?php
 
+use App\Settings\SettingsCommonsDatabase;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +14,13 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
+        Schema::create('categorias', function (Blueprint $table) {
+            SettingsCommonsDatabase::addId($table);
+            $table->string('nombre', SettingsCommonsDatabase::getDefaultLength());
             $table->text('descripcion');
             $table->integer('prioridad');
-            $table->string('is_public', 1);
+            $table->string('is_public', 10);
+            SettingsCommonsDatabase::addAuditFields($table);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('categorias');
     }
 }

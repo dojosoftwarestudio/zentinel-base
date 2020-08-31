@@ -11,11 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
-        User::create([
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('adminadmin'),
-            'name' => 'Administrator',
-        ]);
+        factory(App\User::class, 5)->create();
     }
 }

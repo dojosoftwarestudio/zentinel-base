@@ -1,0 +1,10 @@
+models:
+  RolesBlue:
+    title: string
+    category_id: id
+    slug: unique
+  Category:
+    name: string
+    slug: string unique
+    relationships:
+      hasMany: RolesBlue

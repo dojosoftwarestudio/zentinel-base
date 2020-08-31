@@ -1,2 +1,17 @@
 WEBSERVICES
- ☐
+ SOLICITUDES
+ ☐ list: Todas las solicitudes
+ ☐ listBy: Todas las solicitudes con filtro
+ ☐ listTecnico: Todas las solicitudes de un tecnico
+ ☐ listSolicitados: Todas las solicitudes de un usuario
+ ☐ show: Detalle de solicitud, incluyendo los eventos
+ ☐ store: Guardar solicitud
+ ☐ setEstado: Modificar el estado de una solicitud
+ ☐ setCategoria: Cambiar de categoria
+
+ CATEGORIA
+  ☐ CRUD
+  ☐ list
+  ☐ listBy
+
+
