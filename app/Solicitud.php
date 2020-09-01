@@ -9,7 +9,6 @@ class Solicitud extends Model
     protected $table = "solicitudes";
     protected $guarded = [];
 
-
 	public function solicitante()
     {
         return $this->belongsTo(User::class, 'id_user','id');

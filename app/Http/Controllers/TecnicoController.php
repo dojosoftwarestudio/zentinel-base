@@ -50,7 +50,7 @@ class TecnicoController extends Controller
         ]);
         $req->request->add(['estado' => 4]);
         $asignacion = new Acciones();
-        //dd($req->all());
+
         $res = $asignacion->setEstado($req);
         return $res;
     }

@@ -3,7 +3,6 @@
         <v-toolbar >
             <v-toolbar-title>Atender</v-toolbar-title>
             <v-spacer></v-spacer>
-
         </v-toolbar>
        <table-component
           :table="table"
@@ -11,10 +10,10 @@
         ></table-component>
         <Actions ref="actionsModal"></Actions>
     </v-card>
-
 </template>
 <script>
-import Actions from './Actions'
+import Actions from "./Actions";
+
 export default {
     components:{
         Actions

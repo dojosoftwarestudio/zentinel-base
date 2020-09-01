@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class Test extends Controller
 {
+
     public function index(){
         return response()->json('ok');
     }

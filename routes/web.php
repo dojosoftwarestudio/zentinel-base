@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+$nameSpaceBase = "App\\Http\\Controllers\\";
 // Route::get('/', function () {
 //     return view('zentinel');
 // });
-Route::get('/{any}', 'ZentinelController@index')->where('any', '.*');
+Route::get('/{any}', $nameSpaceBase.'ZentinelController@index')->where('any', '.*');
