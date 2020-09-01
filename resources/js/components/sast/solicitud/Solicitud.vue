@@ -22,14 +22,14 @@
 			<v-row>
 				<v-col cols="12" sm="6" md="12">
 					<v-select
-			          v-model="solicitud.id_categoria"
-			          :items="categorias"
-			          append-outer-icon="mdi-sitemap"
-			          chip
-			          label="Seleccione una categoria"
-			          item-text="nombre"
-			          item-value="idCategoria"
-			        ></v-select>
+                    v-model="solicitud.id_categoria"
+                    :items="categorias"
+                    append-outer-icon="mdi-sitemap"
+                    chip
+                    label="Seleccione una categoria"
+                    item-text="nombre"
+                    item-value="idCategoria"
+                ></v-select>
 				</v-col>
 				<v-col cols="12" sm="6" md="12">
 					<v-textarea

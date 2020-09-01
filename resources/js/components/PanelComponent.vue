@@ -73,8 +73,8 @@ export default {
                     url:"security"
 				},
 				{
-					title: "SAST",
-					description: "app 1 description",
+					title: "SIRIN",
+					description: "Sistema de Reporte de Incidencias",
 					icon: "mdi-comment-question",
                     color: "#f85a40",
                     url:"sast"

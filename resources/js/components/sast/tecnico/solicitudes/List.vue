@@ -39,7 +39,7 @@ export default {
     porps:{},
     methods:{
         list: async function(){
-            const rest = await this.callApi('get', '/api/missolicitudes/2','')
+            const rest = await this.callApi('get', '/api/missolicitudes/3','')
             this.table.items = rest.data.data
         },
         addItem: function(item){

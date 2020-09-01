@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+$nameSpaceSIRIN = "App\\Http\\Controllers\\Sirin\\";
+
+
+
 Route::group([
     'prefix' => 'auth'
 ], function ($router) {
@@ -23,6 +27,11 @@ Route::group([
     Route::get('profile', 'AuthController@profile');
 
 });
+
+Route::get('test/', $nameSpaceSIRIN.'Test@index');
+Route::get('test/list', $nameSpaceSIRIN.'Test@list');
+
+
 Route::get('solicitud/list', 'SolicitudController@list');
 Route::get('solicitud/eventos/{id}', 'SolicitudController@eventos');
 Route::get('solicitud/{id}', 'SolicitudController@show');
@@ -38,7 +47,6 @@ Route::get('category/list', 'CategoryController@list');
 Route::post('category/create', 'CategoryController@store');
 Route::delete('category/delete/{id}', 'CategoryController@destroy');
 Route::post('category/filter', 'CategoryController@listBy');
-
 #usuarios
 Route::get('user/list', 'UserController@list');
 Route::post('user/create', 'UserController@store');
@@ -49,7 +57,6 @@ Route::get('persona/list', 'PersonaController@list');
 Route::post('persona/create', 'PersonaController@store');
 Route::post('persona/update', 'PersonaController@update');
 Route::get('persona/{id}', 'PersonaController@show');
-
 #estado
 Route::get('estado/list', 'EstadoController@list');
 Route::post('estado/create', 'EstadoController@store');

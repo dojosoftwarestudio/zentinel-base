@@ -63,18 +63,18 @@ class SolicitudController extends Controller
 		$solicitud = DB::table('solicitudes')
                         ->leftJoin('users', 'users.id', '=', 'solicitudes.id_user')
                         ->leftJoin('archivos', 'archivos.id_solicitud', '=', 'solicitudes.id')
-                        ->leftJoin('categoria', 'categoria.id', '=', 'solicitudes.id_categoria')
+                        ->leftJoin('categorias', 'categorias.id', '=', 'solicitudes.id_categoria')
                         ->where('solicitudes.id', $id)
-                        ->select('solicitudes.*', 'users.name as usuario', 'archivos.nombre', 'archivos.path','categoria.nombre as categoria', 'categoria.prioridad as prioridad')
+                        ->select('solicitudes.*', 'users.name as usuario', 'archivos.nombre', 'archivos.path','categorias.nombre as categoria', 'categorias.prioridad as prioridad')
                         ->get();
 
-		$eventos = Evento::where('id_solicitud', $id)->get();
+        $eventos = Evento::where('id_solicitud', $id)->get();
 		return response()->json(['solicitud'=> SolicitudResources::collection($solicitud), 'eventos' => $eventos],200);
 	}
-    public function store(SolicitudRequest $req){   
+    public function store(SolicitudRequest $req){
         try {
             $file = $req->file;
-            $colaCategoria = DB::table('queues')->where('id_categoria', $req->id_categoria)->first();    
+            $colaCategoria = DB::table('queues')->where('id_categoria', $req->id_categoria)->first();
             if($colaCategoria != null){
                 $solicitud = Solicitud::create($req->validated());
                 $evento = $this->asignar($solicitud->id, $colaCategoria);
@@ -115,7 +115,7 @@ class SolicitudController extends Controller
 
     	return response()->json('OK', 200);
     }
- 	private function asignar($solicitud, $colaCategoria, $detalle = 'asignado por el sistema'){        
+ 	private function asignar($solicitud, $colaCategoria, $detalle = 'asignado por el sistema'){
             $tecnico = DB::table('queue_tecnicos')->where('id_cola', $colaCategoria->id)->where('turno', $colaCategoria->turno)->first();
             Solicitud::where('id', $solicitud)->update(['id_tecnico' => $tecnico->id]);
             $this->registarEvento($solicitud, $colaCategoria->id, $tecnico->id, $detalle);
@@ -124,7 +124,7 @@ class SolicitudController extends Controller
             // SEND MAIL TO TECNICO
             $solicitudMail = new SolicitudResources(Solicitud::findOrFail($solicitud));
             Mail::to('email@email.com')->queue(new MessageRecevied($solicitudMail));
-            
+
             $this->setEstadoSolicitud($solicitud, 2);
     }
     private function siguienteCola($colaActual, $turnoActual, $tecnicoActual){
@@ -168,7 +168,7 @@ class SolicitudController extends Controller
             $model = new Archivos();
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$file->getClientOriginalExtension();
-    
+
             if ($file->move(public_path('upload'), $filename)) {
                 return $model::create([
                         'nombre' => $file->getClientOriginalName(),

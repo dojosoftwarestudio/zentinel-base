@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Helpers\Sirin\Asignacion;
+use App\Helpers\Sirin\Acciones;
 class TecnicoController extends Controller
 {
     public function derivar(Request $req){
@@ -13,14 +13,14 @@ class TecnicoController extends Controller
             'descripcion' => 'required',
             'id_categoria' => 'required'
         ]);
-        $asignacion = new Asignacion();
+        $asignacion = new Acciones();
         $msg = '';
         if($req->id_tecnico != null){
            $asignacion->asignacionTecnico($req->id, $req->id_categoria, $req->id_tecnico,  $req->descripcion);
            Solicitud::where('id', $req->id)->update(['id_categoria' =>  $req->id_categoria]);
            $msg = 'Asignado al tecnico exitosamente';
         }else{
-            $colaCategoria = DB::table('queues')->where('id_categoria', $req->id_categoria)->first();             
+            $colaCategoria = DB::table('queues')->where('id_categoria', $req->id_categoria)->first();
             $asignacion->asignacionAutomatica($req->id, $colaCategoria, $req->descripcion);
             Solicitud::where('id', $req->id)->update(['id_categoria' =>  $req->id_categoria]);
             $msg = 'Recategorizada exitosamente';
@@ -34,8 +34,8 @@ class TecnicoController extends Controller
             'descripcion' => 'required',
             'id_categoria' => 'required'
         ]);
-        $asignacion = new Asignacion();
-        $colaCategoria = DB::table('queues')->where('id_categoria', $req->id_categoria)->first();             
+        $asignacion = new Acciones();
+        $colaCategoria = DB::table('queues')->where('id_categoria', $req->id_categoria)->first();
         $asignacion->asignacionAutomatica($req->id, $colaCategoria, $req->descripcion);
         Solicitud::where('id', $req->id)->update(['id_categoria' =>  $req->id_categoria]);
         $msg = 'Recategorizada exitosamente';
@@ -49,7 +49,7 @@ class TecnicoController extends Controller
             'id_tecnico' =>'required'
         ]);
         $req->request->add(['estado' => 4]);
-        $asignacion = new Asignacion();
+        $asignacion = new Acciones();
         //dd($req->all());
         $res = $asignacion->setEstado($req);
         return $res;
@@ -62,9 +62,9 @@ class TecnicoController extends Controller
             'id_tecnico' => 'required'
         ]);
         $req->request->add(['estado' => 5]);
-        $asignacion = new Asignacion();
-        
-        $res = $asignacion->setEstado($req);
+        $acciones = new Acciones();
+
+        $res = $acciones->setEstado($req);
         return $res;
     }
 }

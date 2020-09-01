@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\SolicitudResource as SolicitudResources;
 use App\Mail\MessageRecevied;
 
-class  Asignacion
+class  Acciones
 {
     public function __construct()
     {
@@ -24,15 +24,15 @@ class  Asignacion
         $solicitudMail = new SolicitudResources(Solicitud::findOrFail($idSolicitud));
         Mail::to('email@email.com')->queue(new MessageRecevied($solicitudMail));
         $this->setEstadoSolicitud($idSolicitud, 2);
-    }  
+    }
     public function asignacionTecnico($idSolicitud, $idCategoria,$idTecnico, $detalle = 'Message Helper'){
         Solicitud::where('id', $idSolicitud)->update(['id_tecnico' => $idTecnico]);
-        $this->registarEvento($idSolicitud, $idCategoria, $idTecnico, $detalle);        
+        $this->registarEvento($idSolicitud, $idCategoria, $idTecnico, $detalle);
         // SEND MAIL TO TECNICO
         $solicitudMail = new SolicitudResources(Solicitud::findOrFail($idSolicitud));
         Mail::to('email@email.com')->queue(new MessageRecevied($solicitudMail));
         $this->setEstadoSolicitud($idSolicitud, 2);
-    }    
+    }
     public function registarEvento($id_solicitud, $categoria, $tecnico, $detalle){
     	$evento = array('id_solicitud' => $id_solicitud,'id_categoria' => $categoria, 'id_tecnico' => $tecnico, 'detalle' => $detalle);
     	Evento::create($evento);
@@ -73,7 +73,7 @@ class  Asignacion
 
     	$this->registarEvento($id_solicitud, $solicitud->id_categoria, $tecnico, $detalle);
 
-    	return response()->json('OK', 200);
+    	return response()->json(['msg' =>'OK'], 200);
     }
     private function setEstadoSolicitud($solicitud, $estado){
     	$solicitud = Solicitud::findOrFail($solicitud);
