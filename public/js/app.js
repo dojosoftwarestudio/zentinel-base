@@ -2158,8 +2158,8 @@ __webpack_require__.r(__webpack_exports__);
         color: "#371777",
         url: "security"
       }, {
-        title: "SAST",
-        description: "app 1 description",
+        title: "SIRIN",
+        description: "Sistema de Reporte de Incidencias",
         icon: "mdi-comment-question",
         color: "#f85a40",
         url: "sast"
@@ -3931,8 +3931,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -25532,7 +25530,7 @@ var render = function() {
             "v-card",
             [
               _c("v-card-title", { staticClass: "sast", attrs: { dark: "" } }, [
-                _vm._v("\n        \tSolicitar atencion\n        ")
+                _vm._v("\r\n        \tSolicitar atencion\r\n        ")
               ]),
               _vm._v(" "),
               _c(
@@ -25634,9 +25632,9 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n\t\t\t\t\t        " +
+                                              "\r\n\t\t\t\t\t        " +
                                                 _vm._s(text) +
-                                                "\n\t\t\t\t\t      "
+                                                "\r\n\t\t\t\t\t      "
                                             )
                                           ]
                                         )
@@ -27142,7 +27140,7 @@ var render = function() {
             _vm._v("mdi-comment-question")
           ]),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v(" DoIO - ZENTINEL - SAST ")]),
+          _c("v-toolbar-title", [_vm._v(" DoIO - ZENTINEL - SIRIN ")]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
