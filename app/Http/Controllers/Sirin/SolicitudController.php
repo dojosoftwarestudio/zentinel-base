@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\SIRIN;
+use App\Http\Controllers\Controller;
+use App\Models\SIRIN\Solicitud;
 use Illuminate\Http\Request;
-use App\Solicitud;
-use App\Evento;
-use App\Archivos;
-use App\Queue;
-use App\QueueTecnico;
-use App\Http\Requests\ProductCreateRequest;
+use App\Models\SIRIN\Evento;
+use App\Models\SIRIN\Archivos;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 use App\Http\Requests\SolicitudRequest;
-use App\Http\Resources\SolicitudResource as SolicitudResources;
-use App\Http\Resources\EventoResource;
+use App\Http\Resources\SIRIN\SolicitudResource as SolicitudResources;
+use App\Http\Resources\SIRIN\EventoResource;
 use App\Mail\MessageRecevied;
 use Exception;
 

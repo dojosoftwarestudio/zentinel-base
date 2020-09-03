@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SIRIN;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Persona;
-use App\Http\Resources\PersonaResource;
+use App\Models\SIRIN\Persona;
+use App\Http\Resources\SIRIN\PersonaResource;
 
 class PersonaController extends Controller
 {

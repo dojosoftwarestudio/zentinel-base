@@ -1,10 +1,9 @@
 <?php
-
-namespace App\Http\Resources;
+namespace App\Http\Resources\SIRIN;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EstadoResource extends JsonResource
+class RolResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +15,9 @@ class EstadoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'codigo' => $this->codigo,
-            'descripcion' => $this->descripcion,
-            'color' => $this->color,
-            'creado' => $this->created_at,
+            'nombre' => $this->name,
+            'creado' => $this->created_at->diffForHumans()
+
         ];
     }
 }

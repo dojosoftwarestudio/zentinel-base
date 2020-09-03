@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SIRIN;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\Models\SIRIN\Category;
 
-use App\Http\Resources\CategoriaResource;
+use App\Http\Resources\SIRIN\CategoriaResource;
 
 class CategoryController extends Controller
 {

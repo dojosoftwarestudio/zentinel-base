@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SIRIN;
 
+use App\Http\Controllers\Controller;
 use App\Queue;
 use Illuminate\Http\Request;
 
 class QueueController extends Controller
 {
-    public function index(){        
+    public function index(){
     }
     public function store(Request $request){
     }

@@ -8,9 +8,11 @@ Vue.use(Vuetify)
 import themeDojo from './themeDojo'
 import router from './router'
 import store from './store'
-import common from './commons'
+import common from './commons/api'
 Vue.mixin(common)
-
+// ADD URIS FILE FOR PROJECT
+import sirin from './commons/sirin-uris'
+Vue.mixin(sirin)
 
 import Components from "./list-component/components";
 
@@ -53,5 +55,4 @@ const app = new Vue({
     icons: {
         iconfont: 'mdi',
     },
-
 });

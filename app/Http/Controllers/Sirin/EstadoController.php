@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SIRIN;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Estado;
 
-use App\Http\Resources\EstadoResource;
+use App\Http\Resources\SIRIN\EstadoResource;
 
 class EstadoController extends Controller
 {

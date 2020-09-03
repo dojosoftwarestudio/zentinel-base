@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SIRIN;
 
+use App\Http\Controllers\Controller;
 use App\QueueTecnico;
 use Illuminate\Http\Request;
 

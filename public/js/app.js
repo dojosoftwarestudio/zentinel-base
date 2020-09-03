@@ -2158,8 +2158,8 @@ __webpack_require__.r(__webpack_exports__);
         color: "#371777",
         url: "security"
       }, {
-        title: "SAST",
-        description: "app 1 description",
+        title: "SIRIN",
+        description: "Sistema de Reporte de Incidencias",
         icon: "mdi-comment-question",
         color: "#f85a40",
         url: "sast"
@@ -3064,7 +3064,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return this.callApi('get', '/api/solicitud/list', '');
+                return this.callApi('get', this.sirin.PREFIX_URI, this.sirin.solicitud.LIST, '');
 
               case 2:
                 rest = _context.sent;
@@ -3103,7 +3103,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 console.log(item);
                 _context2.next = 3;
-                return this.callApi('get', '/api/solicitud/eventos/' + item, '');
+                return this.callApi('get', this.sirin.PREFIX_URI, 'solicitud/eventos/' + item, '');
 
               case 3:
                 rest = _context2.sent;
@@ -3271,7 +3271,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData.append("user_mod", 2);
                 console.log(formData);
                 _context.next = 12;
-                return this.callApi('post', '/api/solicitar', formData);
+                return this.callApi('post', this.sirin.PREFIX_URI, 'solicitar', formData);
 
               case 12:
                 rest = _context.sent;
@@ -3319,7 +3319,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return this.callApi('get', '/api/category/list', null);
+                return this.callApi('get', this.sirin.PREFIX_URI, 'category/list', null);
 
               case 2:
                 rest = _context2.sent;
@@ -3931,8 +3931,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -27142,7 +27140,7 @@ var render = function() {
             _vm._v("mdi-comment-question")
           ]),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v(" DoIO - ZENTINEL - SAST ")]),
+          _c("v-toolbar-title", [_vm._v(" DoIO - ZENTINEL - SIRIN ")]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
@@ -87375,8 +87373,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _themeDojo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./themeDojo */ "./resources/js/themeDojo.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
-/* harmony import */ var _commons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./commons */ "./resources/js/commons.js");
-/* harmony import */ var _list_component_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./list-component/components */ "./resources/js/list-component/components.js");
+/* harmony import */ var _commons_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./commons/api */ "./resources/js/commons/api.js");
+/* harmony import */ var _commons_sirin_uris__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./commons/sirin-uris */ "./resources/js/commons/sirin-uris.js");
+/* harmony import */ var _list_component_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./list-component/components */ "./resources/js/list-component/components.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -87387,7 +87386,10 @@ Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 
 
-Vue.mixin(_commons__WEBPACK_IMPORTED_MODULE_5__["default"]);
+Vue.mixin(_commons_api__WEBPACK_IMPORTED_MODULE_5__["default"]); // ADD URIS FILE FOR PROJECT
+
+
+Vue.mixin(_commons_sirin_uris__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
 _router__WEBPACK_IMPORTED_MODULE_3__["default"].beforeEach(function (to, from, next) {
   var requiresAuth = to.matched.some(function (record) {
@@ -87464,10 +87466,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/commons.js":
-/*!*********************************!*\
-  !*** ./resources/js/commons.js ***!
-  \*********************************/
+/***/ "./resources/js/commons/api.js":
+/*!*************************************!*\
+  !*** ./resources/js/commons/api.js ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -87487,7 +87489,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     callApi: function () {
-      var _callApi = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(method, url, dataInput) {
+      var _callApi = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(method, prefix, url, dataInput) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -87496,7 +87498,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 3;
                 return axios({
                   method: method,
-                  url: url,
+                  url: prefix + url,
                   data: dataInput
                 });
 
@@ -87516,12 +87518,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 6]]);
       }));
 
-      function callApi(_x, _x2, _x3) {
+      function callApi(_x, _x2, _x3, _x4) {
         return _callApi.apply(this, arguments);
       }
 
       return callApi;
     }()
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/commons/sirin-uris.js":
+/*!********************************************!*\
+  !*** ./resources/js/commons/sirin-uris.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      sirin: {
+        PREFIX_URI: '/api/SIRIN/',
+        solicitud: {
+          LIST: 'solicitud/list',
+          SOLICITAR: 'solicitar'
+        }
+      }
+    };
   }
 });
 

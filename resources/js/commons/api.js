@@ -3,11 +3,11 @@ export default {
         return {}
     },
     methods: {
-		callApi: async function (method, url, dataInput) {
+		callApi: async function (method, prefix, url, dataInput) {
 			try {
 				return await axios({
 					method: method,
-					url: url,
+					url: prefix + url,
 					data: dataInput
 				})
 			}

@@ -110,7 +110,7 @@
     		formData.append("reg_del",0)
     		formData.append("user_mod",2)
     		console.log(formData)
-    		const rest = await this.callApi('post', '/api/solicitar', formData)
+    		const rest = await this.callApi('post', this.sirin.PREFIX_URI, 'solicitar', formData)
     		if(rest.status === 200){
     			this.clear()
     			this.configSnack.color = "green"
@@ -132,7 +132,7 @@
 			this.dialog = false
 		},
 		listCategorias: async function(){
-			const rest = await this.callApi('get','/api/category/list',null)
+			const rest = await this.callApi('get',this.sirin.PREFIX_URI, 'category/list',null)
     		this.categorias = rest.data.data
 		},
     },

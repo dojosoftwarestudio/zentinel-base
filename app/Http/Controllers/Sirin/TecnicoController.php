@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Solicitud;
+namespace App\Http\Controllers\SIRIN;
+use App\Http\Controllers\Controller;
+use App\Models\SIRIN\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\Sirin\Acciones;

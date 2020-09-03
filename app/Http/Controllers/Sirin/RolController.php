@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SIRIN;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 use App\Rol;
-use App\Http\Resources\RolResource;
+use App\Http\Resources\SIRIN\RolResource;
 class RolController extends Controller
 {
     public function list()

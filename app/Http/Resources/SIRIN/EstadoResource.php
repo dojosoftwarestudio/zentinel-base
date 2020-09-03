@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\SIRIN;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EventoResource extends JsonResource
+class EstadoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,11 @@ class EventoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id_evento' => $this->id,
-            'tecnico' => $this->tecnico,
-            'detalle' => $this->detalle,
-            'categoria' => $this->categoria,
-
+            'id' => $this->id,
+            'codigo' => $this->codigo,
+            'descripcion' => $this->descripcion,
+            'color' => $this->color,
+            'creado' => $this->created_at,
         ];
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-
+namespace App\Models\SIRIN;
 use Illuminate\Database\Eloquent\Model;
 
 class Estado extends Model
