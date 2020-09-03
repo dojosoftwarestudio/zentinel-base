@@ -145,6 +145,7 @@
 </template>
 <script>
 import FormSolicitud from './Solicitud'
+
 export default {
     components:{
         FormSolicitud
@@ -180,7 +181,7 @@ export default {
         },
 
         list: async function(){
-            const rest = await this.callApi('get', '/api/solicitud/list','')
+            const rest = await this.callApi('get', this.sirin.PREFIX_URI, this.sirin.solicitud.LIST,'')
             this.table.items = rest.data.data
         },
         addItem: function(item){
@@ -196,7 +197,7 @@ export default {
         },
         loadEventos: async function(item){
             console.log(item)
-            const rest = await this.callApi('get', '/api/solicitud/eventos/'+item, '')
+            const rest = await this.callApi('get', this.sirin.PREFIX_URI, 'solicitud/eventos/'+item, '')
             this.steps = await rest.data.data
         }
     },

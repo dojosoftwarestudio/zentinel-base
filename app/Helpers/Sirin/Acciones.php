@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Helpers\Sirin;
-use App\Solicitud;
-use App\Evento;
+namespace App\Helpers\SIRIN;
+use App\Models\SIRIN\Solicitud;
+use App\SIRIN\Evento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Resources\SolicitudResource as SolicitudResources;
+use App\Http\Resources\SIRIN\SolicitudResource as SolicitudResources;
 use App\Mail\MessageRecevied;
 
 class  Acciones
